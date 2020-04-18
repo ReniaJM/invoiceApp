@@ -1,7 +1,8 @@
 const express = require('express');
 const config = require('./config/global');
 const path = require('path');
-const newinvoice = require('./routes/create');
+const createinvoice = require('./routes/create');
+const readinvoice = require('./routes/read');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const connectDB = require('./config/db');
@@ -27,7 +28,8 @@ app.use(cors());
 app.get('/', (req, res)=>{
   res.send('hej')
 });
-app.use('/invoice/create', newinvoice);
+app.use('/invoice/create', createinvoice);
+app.use('/invoice/allinvoice', readinvoice);
 
 
 //port
