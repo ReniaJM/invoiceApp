@@ -3,10 +3,12 @@ const router = express.Router();
 const modelInvoice = require('../models/Invoice');
 
 /**
- *  POST http://localhost:3000/invoice/create
+ *  UPDATE http://localhost:3000/invoice/update/invoiceID
  */
-router.post('/', (req, res) => {
-  const creteInvoice = new  modelInvoice({
+router.put('/:invoiceID', (req, res) => {
+  modelInvoice.updateOne({
+    _id: req.params.invoiceID
+  },{
     seller:req.body.seller,
     seller_address: req.body.seller_address,
     customer: req.body.customer,
@@ -14,16 +16,17 @@ router.post('/', (req, res) => {
     products: req.body.products,
     sumOfProducts: req.body.sumOfProducts,
     infoInvoice: req.body.infoInvoice,
-  });
-  creteInvoice.save((error, data)=>{
+  }, (error, data)=>{
     if(error){
       console.log("Houston we have a problem!", error);
       res.status(500).json({message:"Houston we have a problem!"})
     }
-    console.log("Great job!")
+    console.log("Great job!");
+    // res.status(200).json({message:"Great job! - update invoice"})
     res.status(200).json(data)
-  });
-
+  })
 });
 
 module.exports=  router;
+
+

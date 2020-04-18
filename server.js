@@ -3,35 +3,44 @@ const config = require('./config/global');
 const path = require('path');
 const createinvoice = require('./routes/create');
 const readinvoice = require('./routes/read');
+const deleteinvoice = require('./routes/delete');
+const updateinvoice = require('./routes/update');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const connectDB = require('./config/db');
 
-// connect database
+/**
+ * connect database
+ */
 connectDB();
-
-
-//server
+/**
+ * server
+ */
 const app = express();
 app.use(express.static(path.join(__dirname, 'dist')));
-
-//bodyParser
+/**
+ * bodyParser
+ */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-
-//cors
+/**
+ * cors
+ */
 app.use(cors());
-
-//routes
-app.get('/', (req, res)=>{
-  res.send('hej')
-});
+/**
+ * REST API
+ */
 app.use('/invoice/create', createinvoice);
-app.use('/invoice/allinvoice', readinvoice);
-
-
-//port
+app.use('/invoice/show', readinvoice);
+app.use('/invoice/delete', deleteinvoice);
+app.use('/invoice/update', updateinvoice);
+app.get('*', (req, res)=>{
+  res.send('<h1>ERROR 404 Page not found :(</h1>')
+});
+/**
+ * port
+ */
 app.listen(config.port, console.log(`Welcome on port ${config.port}`));
 
