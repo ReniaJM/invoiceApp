@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import TextFiled from "./TextField";
 import TextArea from "./TextArea";
+import Table from "./Table";
+import SumOfProducts from './sumOfProducts'
 
 const Layout=()=> {
 
@@ -9,6 +11,11 @@ const Layout=()=> {
   const [customerName, setCustomerName]=useState('');
   const [customerAddress, setCustomerAddress]=useState('');
   const [invoiceText, setInvoiceText]=useState('');
+  const [products]=useState([
+    {name:"młotek ", price:200},
+    {name:"łopata ", price:100},
+    {name:"brabki ", price:60},
+    ]);
 
   return (
     <>
@@ -54,6 +61,8 @@ const Layout=()=> {
         onChange={(e)=> setCustomerAddress(e.target.value)}
         text="Enter the full address"
       />
+      <Table products={products}/>
+      <SumOfProducts products={products}/>
     </>
   );
 };
