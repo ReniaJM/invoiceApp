@@ -3,7 +3,7 @@ const router = express.Router();
 const modelInvoice = require('../models/Invoice');
 
 /**
- *  GET http://localhost:3000/invoice/show
+ *  GET http://localhost:5000/invoice/show
  */
 router.get('/', (req, res) => {
  modelInvoice.find((error,data )=>{
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
  });
 });
 /**
- *  GET http://localhost:3000/invoice/show/invoiceID
+ *  GET http://localhost:5000/invoice/show/invoiceID
  */
 router.get('/:invoiceID', (req,res)=>{
  modelInvoice.findOne({

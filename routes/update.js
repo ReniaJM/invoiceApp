@@ -3,7 +3,7 @@ const router = express.Router();
 const modelInvoice = require('../models/Invoice');
 
 /**
- *  UPDATE http://localhost:3000/invoice/update/invoiceID
+ *  UPDATE http://localhost:5000/invoice/update/invoiceID
  */
 router.put('/:invoiceID', (req, res) => {
   modelInvoice.updateOne({

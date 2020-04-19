@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 
 const TextFiled =(props)=> {
   return (
-   <Form>
+   <>
       <Form.Group controlId={props.id}>
        <Form.Label>{props.label}</Form.Label>
        <Form.Control
@@ -17,7 +17,7 @@ const TextFiled =(props)=> {
         {props.text}
        </Form.Text>
      </Form.Group>
-   </Form>
+   </>
 
   );
 };

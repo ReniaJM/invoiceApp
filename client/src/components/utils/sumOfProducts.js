@@ -6,7 +6,6 @@ import Col from 'react-bootstrap/Col';
 class SumOfProducts extends Component {
   render(){
     let sum = 0;
-
     const {products} = this.props;
     {products.map( product =>
     sum = sum + product.price

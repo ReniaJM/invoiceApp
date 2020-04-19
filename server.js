@@ -19,16 +19,17 @@ connectDB();
 const app = express();
 app.use(express.static(path.join(__dirname, 'dist')));
 /**
+* cors
+*/
+app.use(cors());
+/**
+/**
  * bodyParser
  */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
-/**
- * cors
- */
-app.use(cors());
 /**
  * REST API
  */

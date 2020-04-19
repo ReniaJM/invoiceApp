@@ -3,7 +3,7 @@ const router = express.Router();
 const modelInvoice = require('../models/Invoice');
 
 /**
- *  DELETE http://localhost:3000/invoice/delete/invoiceID
+ *  DELETE http://localhost:5000/invoice/delete/invoiceID
  */
 router.delete('/:invoiceID', (req, res) => {
   modelInvoice.deleteOne({
