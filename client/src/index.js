@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
-import HomePage from "./components/HomePage";
-import CreateInvoice from "./components/CreateInvoice";
-import UpdateInvoice from "./components/UpdateInvoice";
-import ShowInvoice from "./components/ShowInvoice";
-import AllInvoices from "./components/AllInvoices";
-import PageNotFound from "./components/PageNotFound";
+import HomePage from "./components/routes/HomePage";
+import CreateInvoice from "./components/routes/CreateInvoice";
+import UpdateInvoice from "./components/routes/UpdateInvoice";
+import ShowInvoice from "./components/routes/ShowInvoice";
+import AllInvoices from "./components/routes/AllInvoices";
+import PageNotFound from "./components/routes/PageNotFound";
 
 
 ReactDOM.render(
