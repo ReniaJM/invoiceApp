@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ViewButton from './ViewButton'
-
+import UpdateButton from './UpdateButton';
 
 const TableInvoice =(props)=>{
 
@@ -30,6 +30,9 @@ const TableInvoice =(props)=>{
               </Button>
               <ViewButton
               invoiceID={invoice.id}
+              />
+              <UpdateButton
+               invoiceID={invoice.id}
               />
             </ButtonGroup>
           </Col>

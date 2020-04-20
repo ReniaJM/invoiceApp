@@ -15,7 +15,7 @@ ReactDOM.render(
     <Switch>
       <Route exact path='/' component={HomePage}/>
       <Route exact path='/creteInvoice' component={CreateInvoice}/>
-      <Route exact path='/updateInvoice' component={UpdateInvoice}/>
+      <Route exact path='/updateInvoice/:invoiceID' component={UpdateInvoice}/>
       <Route exact path='/showInvoice/:invoiceID' component={ShowInvoice}/>
       <Route exact path='/allInvoices' component={AllInvoices}/>
       <Route component={PageNotFound}/>

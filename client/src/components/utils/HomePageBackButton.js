@@ -2,20 +2,20 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 
-const UpdateButton =(props)=> {
+const HomePageBackButton =()=> {
   const history = useHistory();
 
   const handleClick =()=>{
-    history.push(`/updateInvoice/${props.invoiceID}`)
+    history.push('/')
   };
   return (
-    <Button
-      variant='primary'
-      onClick={handleClick}
+    <Button style={{margin:"2em"}}
+            variant='warning'
+            onClick={handleClick}
     >
-      Update invoice
+      Back To Homepage
     </Button>
   )
 };
 
-export default UpdateButton;
+export default HomePageBackButton;

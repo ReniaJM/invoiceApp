@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import HomePageBackButton from '../utils/HomePageBackButton';
 import TableInvoice from '../utils/TableInvoice';
 import Notification from '../utils/Notification'
-
 
 class AllInvoices extends Component {
   constructor(props){
@@ -19,18 +21,17 @@ class AllInvoices extends Component {
     this.closeWindow = this.closeWindow.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount():void {
     const url = 'http://localhost:5000/invoice/show';
     axios.get(url)
       .then((response)=>{
         if(response.status === 200){
-          console.log(response.data)
         }else{
           console.log("Houston we have a problem!")
         }
         let invoices=[];
-        const ar = response.data;
-        ar.map((invoice, i)=>{
+        const copyData  = response.data;
+        copyData.map((invoice, i)=>{
           invoices.push(
             {
               id : invoice._id,
@@ -43,7 +44,6 @@ class AllInvoices extends Component {
             dataInvoices: state.dataInvoices.concat(invoices)
           }
         });
-        console.log(this.state.dataInvoices)
       })
       .catch(e=>console.log(e),);
   }
@@ -78,8 +78,6 @@ class AllInvoices extends Component {
         }
       })
       .catch(e=>console.log(e),);
-
-    console.log(invoiceID, 'to jest handleDelete')
   }
 
   closeWindow(){
@@ -102,6 +100,11 @@ class AllInvoices extends Component {
           content={this.state.content}
           closeWindow={this.closeWindow}
           />
+          <Row>
+            <Col style={{textAlign: "center"}}>
+              <HomePageBackButton/>
+            </Col>
+          </Row>
         </Jumbotron>
     );
   }

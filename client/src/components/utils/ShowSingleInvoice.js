@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import axios from "axios";
+import axios from 'axios';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import TableProduct from './TableProduct'
-import NavigationButton from '../utils/NavigationButton'
+import NavigationButton from './BackButton'
 
 
 class ShowSingleInvoice extends Component {
@@ -31,9 +31,7 @@ class ShowSingleInvoice extends Component {
     axios.get(url)
       .then((response)=>{
         if(response.status === 200){
-          console.log(response.data._id)
           const copyData = response.data;
-
           this.setState({
             invoiceText: copyData.infoInvoice,
             sellerName: copyData.seller,
@@ -64,10 +62,10 @@ class ShowSingleInvoice extends Component {
         <Jumbotron>
           <Card bg='dark' text='white'>
             <Card.Header as='h3' style={{textAlign: "center"}}>
-              Sales Invoice
+              Invoice
             </Card.Header>
             <Card.Body>
-              <h2>Error!!! Something went wrong!</h2>
+              <h2>Error!!! We have some problems!</h2>
             </Card.Body>
           </Card>
         </Jumbotron>
@@ -77,7 +75,7 @@ class ShowSingleInvoice extends Component {
       <Jumbotron>
         <Card bg='dark' text='white'>
           <Card.Header as='h3' style={{textAlign: "center"}}>
-            Sales invoice
+            Invoice
           </Card.Header>
           <Card.Body>
             <Container>

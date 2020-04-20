@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from "react-bootstrap/Container";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import axios from 'axios';
 import TextFiled from './TextField';
-import TextArea from './TextArea';
 import TableProduct from './TableProduct';
 import SumOfProducts from './sumOfProducts'
 import ProductRow from './ProductRow';
@@ -98,7 +97,6 @@ class Layout extends Component {
   };
 
   handleSubmit(event){
-    event.preventDefault();
     let finalSum = 0;
     const currentProducts = this.state.products;
     {currentProducts.map(product=>{
@@ -144,7 +142,7 @@ class Layout extends Component {
           <Row style={{marginTop:'1em'}}>
             <Col>
               <CustomCard head='Invoice information'>
-                <TextArea
+                <TextFiled
                   label="Enter information about invoice"
                   name="invoiceText"
                   value={this.state.invoiceText}

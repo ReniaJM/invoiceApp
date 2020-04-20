@@ -1,10 +1,13 @@
 import React from 'react';
-
+import { useParams } from 'react-router-dom';
+import UpdateSingleInvoice from '../utils/UpdateSingleInvoice';
 
 const UpdateInvoice =()=> {
+  const { invoiceID } = useParams();
   return (
-    <div>UpdateInvoice</div>
-
+    <UpdateSingleInvoice
+      invoiceID={invoiceID}
+    />
   );
 }
 

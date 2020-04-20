@@ -1,20 +1,22 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Layout from "../utils/Layout";
+import CreateInvoiceButton from '../utils/CreateInvoiceButton';
+import ListingButton from '../utils/ListingButton';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const HomePage =()=> {
   return (
-    <Jumbotron >
-      <Card bg='dark'>
-        <Card.Body >
-          <Card.Title as='h2' style={{textAlign: "center", color:"white"}}>Invoice </Card.Title>
-          <Card.Text  style={{textAlign: "center", fontSize:"1.5em",color:"white"}}>
-            Create Your custom Invoice
-          </Card.Text>
-          <Layout/>
-        </Card.Body>
-      </Card>
+    <Jumbotron>
+      <div style={{textAlign: "center", margin:"2em"}}>
+        <h1>Create Your Invoice</h1>
+        <Row>
+          <Col>
+            <CreateInvoiceButton/>
+            <ListingButton/>
+          </Col>
+        </Row>
+      </div>
     </Jumbotron>
 
   );

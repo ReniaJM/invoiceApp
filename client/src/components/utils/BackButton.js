@@ -2,14 +2,14 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 
-const TableProduct =()=> {
+const BackButton =()=> {
   const history = useHistory();
 
   const handleClick =()=>{
     history.push('/allInvoices')
   };
   return (
-    <Button
+    <Button style={{margin:"2em"}}
       variant='warning'
       onClick={handleClick}
     >
@@ -18,4 +18,4 @@ const TableProduct =()=> {
   )
 };
 
-export default TableProduct;
+export default BackButton;
