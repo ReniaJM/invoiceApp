@@ -11,7 +11,7 @@ import TableProduct from './TableProduct';
 import SumOfProducts from './sumOfProducts'
 import ProductRow from './ProductRow';
 import Notification from './Notification'
-import CustomCard from './Card';
+import CustomCard from './CustomCard';
 
 class Layout extends Component {
   constructor(props) {

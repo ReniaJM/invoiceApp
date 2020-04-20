@@ -3,10 +3,11 @@ import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 
 const InvoiceViewButton =(props)=> {
-  const history = useHistory()
+  const history = useHistory();
 
   const handleClick =()=>{
-console.log(props.inviceID)
+    history.push(`/showInvoice/${props.invoiceID}`)
+console.log(props.invoiceID)
   };
 
     return (

@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 const CustomCard =(props)=> {
   return (
         <Card text={props.text}>
-          <Card.Header as='h3' bg={props.bg}>
+          <Card.Header as='h3'>
             {props.head}
           </Card.Header>
           <Card.Body>

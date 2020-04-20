@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import CustomCard from '../utils/Card';
+import Card from "react-bootstrap/Card";
 import TableInvoice from '../utils/TableInvoice';
 import Notification from '../utils/Notification'
 
@@ -89,12 +89,12 @@ class AllInvoices extends Component {
   render(){
     return (
       <>
-        <CustomCard head='List of Invoices'>
+        <Card bg='dark' text='white'>
           <TableInvoice
             dataInvoices={this.state.dataInvoices}
             handleDelete={this.handleDelete}
           />
-        </CustomCard>
+        </Card>
         <Notification
         show={this.state.show}
         title={this.state.title}

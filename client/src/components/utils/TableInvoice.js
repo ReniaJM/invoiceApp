@@ -29,7 +29,7 @@ const TableInvoice =(props)=>{
                 Delete invoice
               </Button>
               <InvoiceViewButton
-              inviceID={invoice.id}
+              invoiceID={invoice.id}
               />
             </ButtonGroup>
           </Col>
