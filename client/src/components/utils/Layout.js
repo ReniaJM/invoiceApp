@@ -71,13 +71,11 @@ class Layout extends Component {
       this.setState({
         productName:event.target.value
       });
-      console.log(this.state.productName)
     }
     if(event.target.name === 'productPrice'){
       this.setState({
         productPrice: event.target.value
       });
-      console.log(this.state.productPrice)
     }
   };
 
