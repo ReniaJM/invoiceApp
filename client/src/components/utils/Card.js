@@ -3,8 +3,8 @@ import Card from 'react-bootstrap/Card';
 
 const CustomCard =(props)=> {
   return (
-        <Card>
-          <Card.Header as='h3'>
+        <Card text={props.text}>
+          <Card.Header as='h3' bg={props.bg}>
             {props.head}
           </Card.Header>
           <Card.Body>

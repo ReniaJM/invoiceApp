@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-class Table extends Component {
+class TableProduct extends Component {
   render(){
     let productsArray =[];
 
@@ -15,15 +15,12 @@ class Table extends Component {
           <Col>${product.price}</Col>
         </Row>
       )
-    )
-    }
+    )}
     return (
         <Container>
           {productsArray}
         </Container>
-    )
-  }
-
+    )}
 };
 
-export default Table;
+export default TableProduct;

@@ -10,7 +10,6 @@ import ShowInvoice from "./components/routes/ShowInvoice";
 import AllInvoices from "./components/routes/AllInvoices";
 import PageNotFound from "./components/routes/PageNotFound";
 
-
 ReactDOM.render(
   <Router>
     <Switch>

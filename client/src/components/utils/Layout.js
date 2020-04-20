@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import axios from 'axios';
-import TextFiled from "./TextField";
-import TextArea from "./TextArea";
-import Table from "./Table";
+import TextFiled from './TextField';
+import TextArea from './TextArea';
+import TableProduct from './TableProduct';
 import SumOfProducts from './sumOfProducts'
-import ProductRow from "./ProductRow";
+import ProductRow from './ProductRow';
 import Notification from './Notification'
-import CustomCard from "./Card";
-
-
+import CustomCard from './Card';
 
 class Layout extends Component {
   constructor(props) {
@@ -123,8 +121,8 @@ class Layout extends Component {
           console.log(response)
           this.setState({
             show :true,
-            title: "Succes!",
-            content: "The invoice was cretead succesfully!"
+            title: "Success!",
+            content: "The invoice was cretead successfully!"
           })
         }else{
           this.setState({
@@ -205,7 +203,7 @@ class Layout extends Component {
           <Row style={{marginTop:'3em'}}>
             <Col>
               <CustomCard head='Add products'>
-                <Table products={this.state.products}/>
+                <TableProduct products={this.state.products}/>
                 <ProductRow
                   productName={this.state.productName}
                   productPrice={this.state.productPrice}
