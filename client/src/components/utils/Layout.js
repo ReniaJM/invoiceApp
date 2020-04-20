@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import axios from 'axios';
 import TextFiled from "./TextField";
 import TextArea from "./TextArea";
 import Table from "./Table";
 import SumOfProducts from './sumOfProducts'
 import ProductRow from "./ProductRow";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import axios from 'axios';
+import Notification from './Notification'
+
 
 class Layout extends Component {
   constructor(props) {
@@ -20,11 +22,23 @@ class Layout extends Component {
       productName:'',
       productPrice:'',
       products:[],
+      show: false,
+      title: '',
+      content: '',
     };
+
     this.textHandler = this.textHandler.bind(this);
-    this.submitButton = this.submitButton.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.submitButton = this.submitButton.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.closeWindow = this.closeWindow.bind(this);
   }
+
+  closeWindow(){
+    this.setState({
+      show: false,
+    })
+  }
+
   textHandler(event){
     if(event.target.name === 'invoiceText'){
       this.setState({
@@ -99,10 +113,24 @@ class Layout extends Component {
     };
     const url = 'http://localhost:5000/invoice/create';
     axios.post(url,data)
-      .then(response=>console.log(response))
-      .catch(e=>console.log(e))
+      .then((response)=>{
+        if(response.status === 200){
+          console.log(response)
+          this.setState({
+            show :true,
+            title: "Succes!",
+            content: "The invoice was cretead succesfully!"
+          })
+        }else{
+          this.setState({
+            show :true,
+            title: "Error!",
+            content: "The invoice was not cretead!"
+          })
+        }
+      })
+      .catch(e=>console.log(e),);
     event.preventDefault();
-    console.log('sumbit')
   }
 
   render(){
@@ -163,8 +191,16 @@ class Layout extends Component {
         <Button
           type='submit'
           variant="outline-success"
-          size='lg'
-        >Create Invoice</Button>
+          size='lg'>
+          Create Invoice
+        </Button>
+        <Notification
+          show={this.state.show}
+          title={this.state.title}
+          content={this.state.content}
+          closeWindow={this.closeWindow}
+
+        />
       </Form>
    </>
     );
