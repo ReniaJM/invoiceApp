@@ -5,7 +5,6 @@ import ShowSingleInvoice from '../utils/ShowSingleInvoice'
 const ShowInvoice =()=> {
   const { invoiceID } = useParams();
   return (
-
     <ShowSingleInvoice
       invoiceID={invoiceID}
     />

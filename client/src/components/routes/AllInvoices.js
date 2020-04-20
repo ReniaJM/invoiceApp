@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Card from "react-bootstrap/Card";
+import Card from 'react-bootstrap/Card';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 import TableInvoice from '../utils/TableInvoice';
 import Notification from '../utils/Notification'
 
@@ -88,20 +89,20 @@ class AllInvoices extends Component {
   }
   render(){
     return (
-      <>
-        <Card bg='dark' text='white'>
-          <TableInvoice
-            dataInvoices={this.state.dataInvoices}
-            handleDelete={this.handleDelete}
+        <Jumbotron>
+          <Card bg='dark' text='white' style={{padding: "2em"}}>
+            <TableInvoice
+              dataInvoices={this.state.dataInvoices}
+              handleDelete={this.handleDelete}
+            />
+          </Card>
+          <Notification
+          show={this.state.show}
+          title={this.state.title}
+          content={this.state.content}
+          closeWindow={this.closeWindow}
           />
-        </Card>
-        <Notification
-        show={this.state.show}
-        title={this.state.title}
-        content={this.state.content}
-        closeWindow={this.closeWindow}
-        />
-      </>
+        </Jumbotron>
     );
   }
 };

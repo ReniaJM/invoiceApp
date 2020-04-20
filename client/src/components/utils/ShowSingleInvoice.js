@@ -4,10 +4,24 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import axios from "axios";
 
 class ShowSingleInvoice extends Component {
+  constructor(props){
+    super(props)
+  }
 
   componentDidMount() {
+    const url =`http://localhost:5000/invoice/show/${this.props.invoiceID}`;
+    axios.get(url)
+      .then((response)=>{
+        if(response.status === 200){
+          console.log(response)
+        }else{
+          throw new Error();
+        }
+      })
+      .catch(e => console.log(e),);
   }
 
   render(){
@@ -55,7 +69,6 @@ class ShowSingleInvoice extends Component {
       </Jumbotron>
     );
   }
-
 };
 
 export default ShowSingleInvoice;

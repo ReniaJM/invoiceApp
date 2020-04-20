@@ -16,10 +16,10 @@ const TableInvoice =(props)=>{
       invoicesArray.push(
         <Row key={i} style={{marginTop: "1em"}}>
           <Col>
-            <h5>{invoice.id}</h5>
+            <h6>{invoice.id}</h6>
           </Col>
           <Col>
-            <h5>{invoice.infoInvoice}</h5>
+            <h6>{invoice.infoInvoice}</h6>
            </Col>
           <Col>
             <ButtonGroup>
