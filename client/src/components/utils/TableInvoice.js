@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import InvoiceViewButton from './InvoiceViewButton'
+import ViewButton from './ViewButton'
 
 
 const TableInvoice =(props)=>{
@@ -28,7 +28,7 @@ const TableInvoice =(props)=>{
                 onClick={()=>{props.handleDelete(invoice.id)}}>
                 Delete invoice
               </Button>
-              <InvoiceViewButton
+              <ViewButton
               invoiceID={invoice.id}
               />
             </ButtonGroup>

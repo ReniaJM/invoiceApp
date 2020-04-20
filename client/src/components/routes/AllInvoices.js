@@ -29,7 +29,7 @@ class AllInvoices extends Component {
           console.log("Houston we have a problem!")
         }
         let invoices=[];
-        const ar= response.data;
+        const ar = response.data;
         ar.map((invoice, i)=>{
           invoices.push(
             {

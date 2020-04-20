@@ -2,22 +2,20 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
 
-const InvoiceViewButton =(props)=> {
+const TableProduct =()=> {
   const history = useHistory();
 
   const handleClick =()=>{
-    history.push(`/showInvoice/${props.invoiceID}`)
-console.log(props.invoiceID)
+    history.push('/allInvoices')
   };
-
-    return (
+  return (
     <Button
       variant='warning'
       onClick={handleClick}
     >
-      Show invoice
+      Go Back
     </Button>
-    )
+  )
 };
 
-export default InvoiceViewButton;
+export default TableProduct;

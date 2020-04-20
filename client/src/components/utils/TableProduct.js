@@ -1,14 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-class TableProduct extends Component {
-  render(){
+const TableProduct =(props)=> {
     let productsArray =[];
-
-    const {products} = this.props;
-    {products.map((product, i) =>
+    const allProducts = props.products;
+    {allProducts.map((product, i) =>
       productsArray.push(
         <Row key={i}>
           <Col>{product.name}</Col>
@@ -20,7 +18,7 @@ class TableProduct extends Component {
         <Container>
           {productsArray}
         </Container>
-    )}
+    )
 };
 
 export default TableProduct;

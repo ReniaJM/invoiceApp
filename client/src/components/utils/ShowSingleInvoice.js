@@ -1,14 +1,29 @@
 import React, { Component } from 'react';
+import axios from "axios";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import axios from "axios";
+import TableProduct from './TableProduct'
+import NavigationButton from '../utils/NavigationButton'
+
 
 class ShowSingleInvoice extends Component {
   constructor(props){
-    super(props)
+    super(props);
+    this.state = {
+      isError: false,
+      invoiceText:'',
+      sellerName: '',
+      sellerAddress: '',
+      customerName:'',
+      customerAddress:'',
+      products:[],
+      finalSum: '',
+      date: '',
+      invoiceId: ''
+    }
   }
 
   componentDidMount() {
@@ -16,15 +31,48 @@ class ShowSingleInvoice extends Component {
     axios.get(url)
       .then((response)=>{
         if(response.status === 200){
-          console.log(response)
+          console.log(response.data._id)
+          const copyData = response.data;
+
+          this.setState({
+            invoiceText: copyData.infoInvoice,
+            sellerName: copyData.seller,
+            sellerAddress: copyData.seller_address,
+            customerName:copyData.customer,
+            customerAddress: copyData.customer_address,
+            products: copyData.products,
+            finalSum: copyData.sumOfProducts,
+            date: copyData.date,
+            invoiceId: copyData._id,
+          })
         }else{
           throw new Error();
         }
+
       })
-      .catch(e => console.log(e),);
+      .catch(()=>{
+          this.setState({
+            isError : true
+          });
+        console.log('Something went wrong!')
+      });
   }
 
   render(){
+    if(this.state.isError){
+      return(
+        <Jumbotron>
+          <Card bg='dark' text='white'>
+            <Card.Header as='h3' style={{textAlign: "center"}}>
+              Sales Invoice
+            </Card.Header>
+            <Card.Body>
+              <h2>Error!!! Something went wrong!</h2>
+            </Card.Body>
+          </Card>
+        </Jumbotron>
+      )
+    }
     return (
       <Jumbotron>
         <Card bg='dark' text='white'>
@@ -35,37 +83,51 @@ class ShowSingleInvoice extends Component {
             <Container>
               <Row>
                 <Col style={{textAlign: "right", color: "white"}}>
-                  <h5>Seller's Name and Address</h5>
+                  <h4>Seller's Name and Address</h4>
+                  <p>{this.state.sellerName}</p>
+                  <p>{this.state.sellerAddress}</p>
                 </Col>
               </Row>
               <Row>
                 <Col style={{textAlign: "right", color: "white"}}>
-                  <h5>Customer Name and Address</h5>
+                  <h4>Customer Name and Address</h4>
+                  <p>{this.state.customerName}</p>
+                  <p>{this.state.customerAddress}</p>
                 </Col>
               </Row>
               <Row>
                 <Col style={{textAlign: "left", color: "white"}}>
-                  <h5>Invoice ID and Date</h5>
+                  <h4>Invoice ID and Date</h4>
+                  <p>{this.state.invoiceId}</p>
+                  <p>{new Date(this.state.date).toLocaleDateString()}</p>
                 </Col>
               </Row>
               <Row>
                 <Col style={{textAlign: "left", color: "white"}}>
-                  <h5>Invoice Information</h5>
+                  <h4>Invoice Information</h4>
+                  <p>{this.state.invoiceText}</p>
                 </Col>
               </Row>
               <Row>
                 <Col style={{textAlign: "left", color: "white"}}>
-                  <h5>Products Purchased</h5>
+                  <h4>Products Purchased</h4>
+                  <TableProduct products={this.state.products}/>
                 </Col>
               </Row>
               <Row>
                 <Col style={{textAlign: "left", color: "white"}}>
-                  <h5>Final Price</h5>
+                  <h4>Final Price</h4>
+                  <p>${this.state.finalSum}</p>
                 </Col>
               </Row>
             </Container>
           </Card.Body>
         </Card>
+        <Row>
+          <Col style={{textAlign: "center"}}>
+            <NavigationButton/>
+          </Col>
+        </Row>
       </Jumbotron>
     );
   }
