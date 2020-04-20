@@ -7,7 +7,7 @@ const TextArea =(props)=> {
     <InputGroup>
       <InputGroup.Prepend>
         <InputGroup.Text>
-          <h5>{props.label}</h5>
+          <h6>{props.label}</h6>
         </InputGroup.Text>
       </InputGroup.Prepend>
       <FormControl

@@ -6,11 +6,11 @@ import Layout from "../utils/Layout";
 const HomePage =()=> {
   return (
     <Jumbotron >
-      <Card>
-        <Card.Body>
-          <Card.Title>Your Invoice </Card.Title>
-          <Card.Text>
-            Create Your custom Invoice!
+      <Card bg='dark'>
+        <Card.Body >
+          <Card.Title as='h2' style={{textAlign: "center", color:"white"}}>Invoice </Card.Title>
+          <Card.Text  style={{textAlign: "center", fontSize:"1.5em",color:"white"}}>
+            Create Your custom Invoice
           </Card.Text>
           <Layout/>
         </Card.Body>

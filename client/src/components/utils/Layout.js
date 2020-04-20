@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import axios from 'axios';
 import TextFiled from "./TextField";
 import TextArea from "./TextArea";
@@ -8,6 +11,8 @@ import Table from "./Table";
 import SumOfProducts from './sumOfProducts'
 import ProductRow from "./ProductRow";
 import Notification from './Notification'
+import CustomCard from "./Card";
+
 
 
 class Layout extends Component {
@@ -137,69 +142,102 @@ class Layout extends Component {
     return (
    <>
       <Form onSubmit={this.handleSubmit}>
-        <TextArea
-          label="Invoice information"
-          name="invoiceText"
-          value={this.state.invoiceText}
-          onChange={this.textHandler}
-        />
-        <TextFiled
-          id="seller-name"
-          label="Seller's name"
-          name="sellerName"
-          placeholder="Fill the name"
-          value={this.state.sellerName}
-          onChange={this.textHandler}
-          text="Enter the full name"
-        />
-        <TextFiled
-          id="seller-address"
-          label="Seller's address"
-          name="sellerAddress"
-          placeholder="Fill the address"
-          value={this.state.sellerAddress}
-          onChange={this.textHandler}
-          text="Enter the full address"
-        />
-        <TextFiled
-          id="customer-name"
-          label="Customer's name"
-          name="customerName"
-          placeholder="Fill the name"
-          value={this.state.customerName}
-          onChange={this.textHandler}
-          text="Type the full name"
-        />
-        <TextFiled
-          id="customer-address"
-          label="Customer's address"
-          name="customerAddress"
-          placeholder="Fill the address"
-          value={this.state.customerAddress}
-          onChange={this.textHandler}
-          text="Enter the full address"
-        />
-        <Table products={this.state.products}/>
-        <ProductRow
-          productName={this.state.productName}
-          productPrice={this.state.productPrice}
-          onChange={this.textHandler}
-          onClick={this.submitButton}
+        <Container>
+          <Row style={{marginTop:'1em'}}>
+            <Col>
+              <CustomCard head='Invoice information'>
+                <TextArea
+                  label="Enter information about invoice"
+                  name="invoiceText"
+                  value={this.state.invoiceText}
+                  onChange={this.textHandler}
+                />
+              </CustomCard>
+            </Col>
+          </Row>
+          <Row style={{marginTop:'1em'}}>
+            <Col>
+              <CustomCard head='Seller name'>
+                <TextFiled
+                  id="seller-name"
+                  label="Seller's name"
+                  name="sellerName"
+                  placeholder="Fill the name"
+                  value={this.state.sellerName}
+                  onChange={this.textHandler}
+                  text="Enter the full name"
+                />
+                <TextFiled
+                  id="seller-address"
+                  label="Seller's address"
+                  name="sellerAddress"
+                  placeholder="Fill the address"
+                  value={this.state.sellerAddress}
+                  onChange={this.textHandler}
+                  text="Enter the full address"
+                />
+              </CustomCard>
+            </Col>
 
-        />
-        <SumOfProducts products={this.state.products}/>
-        <Button
-          type='submit'
-          variant="outline-success"
-          size='lg'>
-          Create Invoice
-        </Button>
+            <Col>
+              <CustomCard head='Customer name'>
+                <TextFiled
+                  id="customer-name"
+                  label="Customer's name"
+                  name="customerName"
+                  placeholder="Fill the name"
+                  value={this.state.customerName}
+                  onChange={this.textHandler}
+                  text="Type the full name"
+                />
+                <TextFiled
+                  id="customer-address"
+                  label="Customer's address"
+                  name="customerAddress"
+                  placeholder="Fill the address"
+                  value={this.state.customerAddress}
+                  onChange={this.textHandler}
+                  text="Enter the full address"
+                />
+             </CustomCard>
+            </Col>
+          </Row>
+          <Row style={{marginTop:'3em'}}>
+            <Col>
+              <CustomCard head='Add products'>
+                <Table products={this.state.products}/>
+                <ProductRow
+                  productName={this.state.productName}
+                  productPrice={this.state.productPrice}
+                  onChange={this.textHandler}
+                  onClick={this.submitButton}
+                />
+              </CustomCard>
+            </Col>
+          </Row>
+          <Row style={{marginTop:'1em'}}>
+            <Col>
+              <CustomCard head='Sum of products'>
+                <SumOfProducts products={this.state.products}/>
+              </CustomCard>
+            </Col>
+          </Row>
+          <Row style={{marginTop:'1em'}}>
+            <Col  style={{textAlign:"center"}}>
+              <Button
+                type='submit'
+                variant="primary"
+                size='lg'>
+                Create Invoice
+              </Button>
+            </Col>
+          </Row>
+        </Container>
         <Notification
           show={this.state.show}
           title={this.state.title}
           content={this.state.content}
           closeWindow={this.closeWindow}
-
         />
       </Form>
    </>

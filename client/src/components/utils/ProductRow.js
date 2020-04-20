@@ -32,10 +32,11 @@ const ProductRow =(props)=> {
               text="Enter the price"
             />
           </Col>
+        </Row>
+        <Row>
           <Col>
             <Button
-              variant="outline-success"
-              size='lg'
+              variant="primary"
               onClick={props.onClick}
             >
               Submit

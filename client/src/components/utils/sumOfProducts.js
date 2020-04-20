@@ -15,7 +15,7 @@ class SumOfProducts extends Component {
       <Container>
         <Row>
           <Col>
-            <h4>Sum: ${sum}</h4>
+            <h4>${sum}</h4>
           </Col>
         </Row>
       </Container>
