@@ -95,6 +95,7 @@ class Layout extends Component {
   };
 
   handleSubmit(event){
+    event.preventDefault();
     let finalSum = 0;
     const currentProducts = this.state.products;
     {currentProducts.map(product=>{
@@ -129,7 +130,6 @@ class Layout extends Component {
         }
       })
       .catch(e=>console.log(e),);
-    event.preventDefault();
   }
 
   render(){

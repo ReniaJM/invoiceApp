@@ -83,8 +83,9 @@ class UpdateSingleInvoice extends Component  {
   };
 
   handleSubmit(event){
-    let finalSumUpdate = 0;
+    event.preventDefault();
     const currentProducts = this.state.products;
+    let finalSumUpdate = 0;
     {currentProducts.map(product=>{
       finalSumUpdate = finalSumUpdate+ product.price;
     })}
@@ -101,7 +102,6 @@ class UpdateSingleInvoice extends Component  {
     axios.put(url,data)
       .then((response)=>{
         if(response.status === 200){
-          console.log(response)
           this.setState({
             show :true,
             title: "Success!",
@@ -116,7 +116,6 @@ class UpdateSingleInvoice extends Component  {
         }
       })
       .catch(e=>console.log(e),);
-    event.preventDefault();
   }
 
   textHandlerUpdate(event){
@@ -149,13 +148,11 @@ class UpdateSingleInvoice extends Component  {
       this.setState({
         productName:event.target.value
       });
-      console.log(this.state.productName)
     }
     if(event.target.name === 'productPrice'){
       this.setState({
         productPrice: event.target.value
       });
-      console.log(this.state.productPrice)
     }
   };
 
