@@ -19,6 +19,7 @@ class UpdateSingleInvoice extends Component  {
     constructor(props){
       super(props);
       this.state = {
+        isError: false,
         invoiceText:'',
         sellerName: '',
         sellerAddress: '',
@@ -37,7 +38,7 @@ class UpdateSingleInvoice extends Component  {
       this.closeWindow = this.closeWindow.bind(this);
     }
 
-  componentDidMount():void {
+  componentDidMount() {
     const url =`http://localhost:5000/invoice/show/${this.props.invoiceID}`;
     axios.get(url)
       .then((response)=>{
@@ -52,12 +53,17 @@ class UpdateSingleInvoice extends Component  {
             customerAddress: copyData.customer_address,
             products: copyData.products,
             finalSum: copyData.sumOfProducts,
-
           })
+        }else{
+          throw new Error();
         }
-        throw new Error();
       })
-      .catch(e=>console.log(e),);
+      .catch(()=>{
+        this.setState({
+          isError : true
+        });
+        console.log('Something went wrong!')
+      });
   }
 
   closeWindow(){
@@ -156,6 +162,20 @@ class UpdateSingleInvoice extends Component  {
   };
 
   render(){
+    if(this.state.isError){
+      return(
+        <Jumbotron>
+          <Card bg='dark' text='white'>
+            <Card.Header as='h3' style={{textAlign: "center"}}>
+              Invoice
+            </Card.Header>
+            <Card.Body>
+              <h2>Error!!! We have some problems!</h2>
+            </Card.Body>
+          </Card>
+        </Jumbotron>
+      )
+    }
   return (
     <Jumbotron>
       <Card bg='dark'>
