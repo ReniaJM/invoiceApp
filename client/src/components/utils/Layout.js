@@ -115,7 +115,6 @@ class Layout extends Component {
     axios.post(url,data)
       .then((response)=>{
         if(response.status === 200){
-          console.log(response)
           this.setState({
             show :true,
             title: "Success!",

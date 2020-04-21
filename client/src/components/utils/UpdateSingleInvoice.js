@@ -25,7 +25,6 @@ class UpdateSingleInvoice extends Component  {
         customerName:'',
         customerAddress:'',
         products:[],
-        finalSum: '',
         productPrice:'',
         productName:'',
         show: false,
@@ -84,10 +83,10 @@ class UpdateSingleInvoice extends Component  {
 
   handleSubmit(event){
     event.preventDefault();
-    const currentProducts = this.state.products;
     let finalSumUpdate = 0;
+    const currentProducts = this.state.products;
     {currentProducts.map(product=>{
-      finalSumUpdate = finalSumUpdate+ product.price;
+      finalSumUpdate = finalSumUpdate + product.price;
     })}
     const data = {
       seller: this.state.sellerName,
@@ -95,7 +94,7 @@ class UpdateSingleInvoice extends Component  {
       customer: this.state.customerName,
       customer_address: this.state.customerAddress,
       products: this.state.products,
-      finalSum: finalSumUpdate,
+      sumOfProducts: finalSumUpdate,
       infoInvoice: this.state.invoiceText
     };
     const url =`http://localhost:5000/invoice/update/${this.props.invoiceID}`;
