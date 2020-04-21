@@ -44,7 +44,6 @@ class UpdateSingleInvoice extends Component  {
       .then((response)=>{
         if(response.status === 200){
           const copyData = response.data;
-
           this.setState({
             invoiceText: copyData.infoInvoice,
             sellerName: copyData.seller,
